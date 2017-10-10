@@ -1,0 +1,24 @@
+//javascript实现点击非指定div区域，隐藏该div
+document.body.addEventListener("click",function(el){
+  el.stopPropagation();
+  var that = el.target;
+  var flag = false;
+  var arrParent=[];
+  parentList(that);
+  function parentList(offsetParent) {
+    if(offsetParent.id){
+      arrParent.push(offsetParent.id);
+    }
+    if(offsetParent.offsetParent){
+      parentList(offsetParent.offsetParent);
+    }
+  }
+  for(var i=0;i<arrParent.length;i++){
+    if(arrParent[i]=="user-info"){
+      flag=true;
+    }
+  }
+  if(!flag){
+    //do you want to do.
+  }
+});
